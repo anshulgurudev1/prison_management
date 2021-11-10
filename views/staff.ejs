@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    
+    <div class="container">
+      <div class="row">
+          <h1>Staff</h1>
+          <table class="table table-striped table-primary">
+            <thead>
+              <tr>
+                <th>Staff Id</th>
+                <th>Staff name</th>    
+              </tr>
+            </thead>
+            <tbody>
+              <%if (records.length >0){ %>
+              <% records.forEach(function(row){ %>
+
+              <tr>
+                <td><%= row.staff_id %></td>
+                <td><%= row.staff_name %></td>
+              
+                
+                <
+               
+              </tr>
+              <% })}else{ %>
+                <tr>
+                    <td colspan="6">No Record Found</td>
+                    
+                  </tr>
+                <% } %>
+            </tbody>
+          </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Staff Details Form</div>
+                    <p><%
+                      if(success !=''){ %>
+                      <%= success %>
+                        <% } %>
+                      </p>
+                     </div>  
+                <div class="panel-body" >
+                    <form action="/addstaff" id="StaffForm" class="form-horizontal" method="post"  role="form">
+                        
+                        <div id="signupalert" style="display:none" class="alert alert-danger">
+                            <p>Error:</p>
+                            <span></span>
+                        </div>
+                            
+                
+                        <div class="form-group">
+                            <label for="prison_name" class="col-md-3 control-label">Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="staff_name" placeholder="Enter staff memeber Name">
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group">
+                                                                
+                            <div class="col-md-offset-3 col-md-9">
+                            <input type="submit" name="submit" value="submit" class="btn btn-primary">   
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                    </form>
+                 </div>
+            </div>
+
+       
+       
+        
+ </div> 
+    </div>
+  </div>
+  </body>
+</html>

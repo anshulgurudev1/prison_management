@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    
+    <div class="container">
+      <div class="row">
+          <h1><%= title %></h1>
+          <table class="table table-striped table-primary">
+            <thead>
+              <tr>
+                <th>Prison Id</th>
+                <th>Prison name</th>
+                <th>Release Date</th>
+                <th>Remainig Day</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%if (records.length >0){ %>
+              <% records.forEach(function(row){ %>
+
+              <tr>
+                <td><%= row.prison_id %></td>
+                <td><%= row.prison_name %></td>
+                <td><%= row.release_date %></td>
+                <td><%= row.remaining_day %></td>
+                
+                <
+                <td><a class="btn btn-primary btn-xs" href="/generate-ticket/<%= row.prison_id %>">Generate ticket</i></a>
+                  <a class="btn btn-primary btn-xs" href="/no-of-visitor/<%= row.prison_id %>">No of visitor</i></a> 
+                </td>
+              </tr>
+              <% })}else{ %>
+                <tr>
+                    <td colspan="6">No Record Found</td>
+                    
+                  </tr>
+                <% } %>
+            </tbody>
+          </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Prison Details Form</div>
+                    <p><%
+                      if(success !=''){ %>
+                      <%= success %>
+                        <% } %>
+                      </p>
+                     </div>  
+                <div class="panel-body" >
+                    <form action="/addprison" id="EmployeeForm" class="form-horizontal" method="post"  role="form">
+                        
+                        <div id="signupalert" style="display:none" class="alert alert-danger">
+                            <p>Error:</p>
+                            <span></span>
+                        </div>
+                            
+                
+                        <div class="form-group">
+                            <label for="prison_name" class="col-md-3 control-label">Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="prison_name" placeholder="Enter prison Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="release_date" class="col-md-3 control-label">Release Date</label>
+                          <div class="col-md-9">
+                              <input type="date" class="form-control" name="release_date" placeholder="Enter release date">
+                          </div>
+                      </div>
+
+                        <div class="form-group">
+                                                                
+                            <div class="col-md-offset-3 col-md-9">
+                            <input type="submit" name="submit" value="submit" class="btn btn-primary">   
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                    </form>
+                    <a class="btn btn-primary btn-xs" href="/addstaff">Add staff</i></a>
+                    <a class="btn btn-primary btn-xs" href="/addadmin">Add Admin</i></a>
+                 </div>
+               
+            </div>
+
+       
+          
+        
+ </div> 
+    </div>
+  </div>
+  </body>
+</html>
